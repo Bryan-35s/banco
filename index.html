@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banco Horizonte | Diagnóstico financiero familiar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">H</span> Banco Horizonte</div>
+  <nav><a href="#formulario">Formulario</a><a href="#resultados">Resultados</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Conozcamos las finanzas de su hogar</h1>
+  <p>Responda el formulario para armar su diagnóstico familiar. Toma unos 5 minutos.</p>
+</section>
+
+<main>
+<form id="formulario" autocomplete="off">
+  <fieldset>
+    <legend>Datos del encuestado</legend>
+    <label>Nombre completo<input name="nombre" type="text" required></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Datos familiares</legend>
+    <label>¿Cuántas personas viven en el hogar?<input name="personas" type="number" min="1" required></label>
+    <label>¿Cuántas personas aportan económicamente?<input name="aportantes" type="number" min="0" required></label>
+    <label>¿Tiene personas dependientes?
+      <select name="dependientes" required><option value="">Seleccione</option><option>Sí</option><option>No</option></select></label>
+    <label id="cantDep" hidden>¿Cuántas?<input name="cantDependientes" type="number" min="1"></label>
+    <label>¿Vivienda propia o alquiler?
+      <select name="vivienda" required><option value="">Seleccione</option><option>Propia</option><option>Alquiler</option></select></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Ingresos</legend>
+    <label>Salarios mensuales del hogar (USD)<input class="ing" name="salarios" type="number" min="0" step="0.01" required></label>
+    <label>¿Tienen otros ingresos? Monto mensual (USD)<input class="ing" name="otrosIngresos" type="number" min="0" step="0.01" value="0"></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Trabajo</legend>
+    <label>¿A qué se dedican?<input name="ocupacion" type="text" required></label>
+    <label>¿Sus ingresos son fijos?
+      <select name="ingresoFijo" required><option value="">Seleccione</option><option>Sí</option><option>No</option><option>Parcialmente</option></select></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Gastos familiares (mensuales, USD)</legend>
+    <div class="grid">
+      <label>Alimentación<input class="gas" name="alimentacion" type="number" min="0" step="0.01" value="0"></label>
+      <label>Alquiler<input class="gas" name="alquiler" type="number" min="0" step="0.01" value="0"></label>
+      <label>Transporte<input class="gas" name="transporte" type="number" min="0" step="0.01" value="0"></label>
+      <label>Educación<input class="gas" name="educacion" type="number" min="0" step="0.01" value="0"></label>
+      <label>Agua<input class="gas" name="agua" type="number" min="0" step="0.01" value="0"></label>
+      <label>Energía eléctrica<input class="gas" name="energia" type="number" min="0" step="0.01" value="0"></label>
+      <label>Internet y teléfono<input class="gas" name="internet" type="number" min="0" step="0.01" value="0"></label>
+      <label>Salud<input class="gas" name="salud" type="number" min="0" step="0.01" value="0"></label>
+      <label>Otras deudas (cuota mensual)<input class="gas" name="deudas" type="number" min="0" step="0.01" value="0"></label>
+    </div>
+  </fieldset>
+
+  <section class="totales">
+    <div><span>Total de ingresos</span><strong id="tIng">$0.00</strong></div>
+    <div><span>Total de gastos</span><strong id="tGas">$0.00</strong></div>
+    <div id="boxDisp"><span>Dinero disponible</span><strong id="tDisp">$0.00</strong></div>
+  </section>
+
+  <button type="submit" id="guardar">Guardar respuestas</button>
+</form>
+
+<section id="resultados">
+  <h2>Resultados</h2>
+  <div class="charts">
+    <div class="card"><canvas id="chIngGas"></canvas></div>
+    <div class="card"><canvas id="chCat"></canvas></div>
+  </div>
+  <div class="card tablewrap"><table id="tabla"><thead></thead><tbody></tbody></table></div>
+</section>
+</main>
+
+<div id="toast" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
