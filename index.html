@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Banco Horizonte | Diagnóstico financiero familiar</title>
+<title>Family Bank | Diagnóstico financiero familiar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="top">
-  <div class="brand"><span class="logo">H</span> Banco Horizonte</div>
+  <div class="brand"><span class="logo">F</span> Family Bank</div>
   <nav><a href="#formulario">Formulario</a><a href="#resultados">Resultados</a></nav>
 </header>
 
@@ -39,8 +39,8 @@
 
   <fieldset>
     <legend>Ingresos</legend>
-    <label>Salarios mensuales del hogar (USD)<input class="ing" name="salarios" type="number" min="0" step="0.01" required></label>
-    <label>¿Tienen otros ingresos? Monto mensual (USD)<input class="ing" name="otrosIngresos" type="number" min="0" step="0.01" value="0"></label>
+    <label>Salarios mensuales del hogar (USD)<input class="ing" name="salarios" type="number" min="0" step="1" inputmode="numeric" required></label>
+    <label>¿Tienen otros ingresos? Monto mensual (USD)<input class="ing" name="otrosIngresos" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
   </fieldset>
 
   <fieldset>
@@ -53,15 +53,15 @@
   <fieldset>
     <legend>Gastos familiares (mensuales, USD)</legend>
     <div class="grid">
-      <label>Alimentación<input class="gas" name="alimentacion" type="number" min="0" step="0.01" value="0"></label>
-      <label>Alquiler<input class="gas" name="alquiler" type="number" min="0" step="0.01" value="0"></label>
-      <label>Transporte<input class="gas" name="transporte" type="number" min="0" step="0.01" value="0"></label>
-      <label>Educación<input class="gas" name="educacion" type="number" min="0" step="0.01" value="0"></label>
-      <label>Agua<input class="gas" name="agua" type="number" min="0" step="0.01" value="0"></label>
-      <label>Energía eléctrica<input class="gas" name="energia" type="number" min="0" step="0.01" value="0"></label>
-      <label>Internet y teléfono<input class="gas" name="internet" type="number" min="0" step="0.01" value="0"></label>
-      <label>Salud<input class="gas" name="salud" type="number" min="0" step="0.01" value="0"></label>
-      <label>Otras deudas (cuota mensual)<input class="gas" name="deudas" type="number" min="0" step="0.01" value="0"></label>
+      <label>Alimentación<input class="gas" name="alimentacion" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Alquiler<input class="gas" name="alquiler" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Transporte<input class="gas" name="transporte" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Educación<input class="gas" name="educacion" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Agua<input class="gas" name="agua" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Energía eléctrica<input class="gas" name="energia" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Internet y teléfono<input class="gas" name="internet" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Salud<input class="gas" name="salud" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
+      <label>Otras deudas (cuota mensual)<input class="gas" name="deudas" type="number" min="0" step="1" inputmode="numeric" value="0"></label>
     </div>
   </fieldset>
 
@@ -71,11 +71,16 @@
     <div id="boxDisp"><span>Dinero disponible</span><strong id="tDisp">$0.00</strong></div>
   </section>
 
-  <button type="submit" id="guardar">Guardar respuestas</button>
+  <div class="acciones">
+    <button type="button" id="borrar" class="sec">Borrar datos</button>
+    <button type="submit" id="guardar">Guardar respuestas</button>
+  </div>
 </form>
 
 <section id="resultados">
   <h2>Resultados</h2>
+  <label class="filtro">Ver resultados de:
+    <select id="verPersona"><option value="todas">Todas las personas</option></select></label>
   <div class="charts">
     <div class="card"><canvas id="chIngGas"></canvas></div>
     <div class="card"><canvas id="chCat"></canvas></div>
